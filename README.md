@@ -221,7 +221,7 @@ All components are built with accessibility in mind:
 ## Responsive Design
 
 The application uses a mobile-first approach with TailwindCSS:
-
+ 
 - Breakpoints: `sm` (640px), `md` (768px), `lg` (1024px), `xl` (1280px)
 - Components adapt to different screen sizes
 - Touch-friendly interactive elements
