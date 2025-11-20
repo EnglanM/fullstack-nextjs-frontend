@@ -26,6 +26,22 @@ export interface User {
   updatedAt?: string;
 }
 
+export interface SignInRequest {
+  email: string;
+  password: string;
+}
+
+export interface SignInResponse {
+  message?: string;
+  token?: string;
+  user?: {
+    id: string;
+    name: string;
+    email: string;
+  };
+  error?: string;
+}
+
 export interface ApiError {
   message: string;
   error?: string;
@@ -47,6 +63,27 @@ export async function registerUser(
 
   if (!response.ok) {
     throw new Error(result.message || result.error || "Registration failed");
+  }
+
+  return result;
+}
+
+export async function signInUser(
+  data: SignInRequest
+): Promise<SignInResponse> {
+  console.log("inside the sign in function");
+  const response = await fetch(`${API_BASE_URL}/auth/sign-in`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  const result = await response.json();
+
+  if (!response.ok) {
+    throw new Error(result.message || result.error || "Sign in failed");
   }
 
   return result;

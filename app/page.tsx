@@ -51,6 +51,24 @@ export default function Home() {
 
             <Card variant="elevated" padding="lg">
               <CardHeader>
+                <CardTitle>Sign In</CardTitle>
+                <CardDescription>
+                  Sign in to your existing account
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Button
+                  variant="primary"
+                  fullWidth
+                  onClick={() => router.push("/signin")}
+                >
+                  Sign In
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card variant="elevated" padding="lg">
+              <CardHeader>
                 <CardTitle>Registration</CardTitle>
                 <CardDescription>
                   Create new user accounts with validation
@@ -88,6 +106,13 @@ export default function Home() {
 
           {/* Quick Actions */}
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+            <Button
+              variant="primary"
+              size="lg"
+              onClick={() => router.push("/signin")}
+            >
+              Sign In
+            </Button>
             <Button
               variant="primary"
               size="lg"

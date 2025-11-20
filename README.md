@@ -24,6 +24,7 @@ All components feature:
 ### Application Pages
 
 - **Home Page** (`/`) - Landing page with navigation to other features
+- **Sign In Page** (`/signin`) - User authentication with email and password
 - **Registration Page** (`/register`) - User registration form with validation
 - **User List Page** (`/users`) - Display all registered users with refresh capability
 
@@ -61,6 +62,7 @@ All components feature:
 2. **Install dependencies**
 
    ```bash
+   nvm use
    npm install
    ```
 
@@ -104,6 +106,7 @@ All components feature:
 fullstack-nextjs-frontend/
 ├── app/                    # Next.js App Router pages
 │   ├── page.tsx           # Home page
+│   ├── signin/            # Sign in page
 │   ├── register/          # Registration page
 │   ├── users/             # User list page
 │   ├── layout.tsx         # Root layout
@@ -128,9 +131,14 @@ fullstack-nextjs-frontend/
 
 The frontend integrates with the backend gateway API:
 
+- **POST /auth/sign-in** - Sign in with existing user credentials
+  - Request body: `{ email: string, password: string }`
+  - Response: `{ message?: string, token?: string, user?: { id: string, name: string, email: string } }`
+  - Stores authentication token in localStorage if provided
+
 - **POST /auth/register** - Register a new user
-  - Request body: `{ username: string, email: string, password: string }`
-  - Response: User object or error message
+  - Request body: `{ name: string, email: string, password: string }`
+  - Response: `{ message?: string, user?: { id: string, name: string, email: string } }`
 
 - **GET /auth/users** - Get all registered users
   - Response: Array of user objects
